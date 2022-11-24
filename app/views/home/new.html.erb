@@ -38,7 +38,7 @@
             </span>
             <button class="btn btn-outline-primary" data-action="click->clipboard#copy">copy</button>
           </td>
-          <td></td>
+          <td><%= link.clicked %></td>
           <td>
             <%= button_to 'Delete', root_path, method: :delete, :onclick => "return confirm('Are you sure you want to delete?')", class: "btn btn-outline-danger bi-trash" %>
           </td>
