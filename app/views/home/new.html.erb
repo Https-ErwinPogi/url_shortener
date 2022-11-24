@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="p-5">
+    <div class="card">
+      <div class="card-body ">
+        <h4>Create shorten url</h4>
+        <%= form_with model: @link, remote: true do |f| %>
+          <%= f.text_field :original_url, class: "form-control", placeholder: 'Paste url here', required: true %>
+          <%= f.submit 'Shorten', class: "btn btn-primary mt-2 float-end" %>
+        <% end %>
+      </div>
+
+      <div class="card-footer text-center">
+        <div class="alert alert-success">
+          <b>Shortened URL: </b>
+          <span data-controller="clipboard">
+            <span data-clipboard-target="link"><%= @link.recent_shortened_url %></span>
+              <button class="btn btn-primary" data-action="click->clipboard#copy">copy</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <table class="table table-bordered text-center">
+      <thead>
+      <tr>
+        <th>Shortened url</th>
+        <th>View Counts</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <% @links.each do |link| %>
+        <tbody>
+        <tr>
+          <td data-controller="clipboard">
+            <span data-clipboard-target="link">
+              <%= link_to link.shortened_url, home_path(link) %>
+            </span>
+            <button class="btn btn-outline-primary" data-action="click->clipboard#copy">copy</button>
+          </td>
+          <td></td>
+          <td>
+            <%= button_to 'Delete', root_path, method: :delete, :onclick => "return confirm('Are you sure you want to delete?')", class: "btn btn-outline-danger bi-trash" %>
+          </td>
+        </tr>
+        </tbody>
+      <% end %>
+    </table>
+  <% end %>
+
+</div>
