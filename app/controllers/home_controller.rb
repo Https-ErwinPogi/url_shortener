@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def new
     @link = Link.new
-    @links = Link.all
+    @links = Link.includes(:user).all
   end
 
   def show
