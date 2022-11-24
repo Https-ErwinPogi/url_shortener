@@ -26,6 +26,7 @@
     <table class="table table-bordered text-center">
       <thead>
       <tr>
+        <th>Original Url</th>
         <th>Shortened url</th>
         <th>Ip Address</th>
         <th>User Agent</th>
@@ -36,6 +37,7 @@
       <% @links.each do |link| %>
         <tbody>
         <tr>
+          <td><%= link.original_url %></td>
           <td data-controller="clipboard">
             <span data-clipboard-target="link">
               <%= link_to link.shortened_url, home_path(link) %>
