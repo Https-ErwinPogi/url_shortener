@@ -20,7 +20,9 @@
       </div>
     </div>
   </div>
+
   <% if user_signed_in? %>
+    <h2>Total shortened url: <%= Link.count %></h2>
     <table class="table table-bordered text-center">
       <thead>
       <tr>
