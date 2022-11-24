@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_062103) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_180448) do
   create_table "links", charset: "utf8mb4", force: :cascade do |t|
     t.string "lookup_code"
     t.string "original_url"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_062103) do
     t.datetime "updated_at", null: false
     t.integer "clicked", default: 0
     t.bigint "user_id"
+    t.string "ip_address"
+    t.string "user_agent"
     t.index ["user_id"], name: "index_links_on_user_id"
   end
 
