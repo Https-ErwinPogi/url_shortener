@@ -27,6 +27,8 @@
       <thead>
       <tr>
         <th>Shortened url</th>
+        <th>Ip Address</th>
+        <th>User Agent</th>
         <th>View Counts</th>
         <th>Action</th>
       </tr>
@@ -40,6 +42,8 @@
             </span>
             <button class="btn btn-outline-primary" data-action="click->clipboard#copy">copy</button>
           </td>
+          <td><%= link.ip_address %></td>
+          <td><%= link.user_agent %></td>
           <td><%= link.clicked %></td>
           <td>
             <%= button_to 'Delete', root_path, method: :delete, :onclick => "return confirm('Are you sure you want to delete?')", class: "btn btn-outline-danger bi-trash" %>
