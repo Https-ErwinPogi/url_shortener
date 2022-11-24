@@ -2,6 +2,7 @@ class Link < ApplicationRecord
   validates_presence_of :lookup_code, :original_url
   validates_uniqueness_of :lookup_code
   validate :original_url_format
+  belongs_to :user
 
   def original_url_format
     uri = URI.parse(original_url || "")
@@ -12,7 +13,7 @@ class Link < ApplicationRecord
   end
 
   def recent_shortened_url
-    "http://localhost:3000/#{Link.last.lookup_code}"
+    Link.last.shortened_url
   end
 
   def shortened_url

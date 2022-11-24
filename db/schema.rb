@@ -17,6 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_062103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "clicked", default: 0
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_links_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
